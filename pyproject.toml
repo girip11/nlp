@@ -1,0 +1,15 @@
+[tool.black]
+line-length = 100
+target-version = ['py37', 'py38']
+
+[tool.nbqa.mutate]
+black = 1
+isort = 1
+
+[tool.nbqa.config]
+isort = ".isort.cfg"
+
+[tool.nbqa.addopts]
+flake8 = [
+  "--extend-ignore=E703,E302,E305",
+]

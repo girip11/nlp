@@ -1,2 +1,3 @@
-# nlp
-Notes on natural language processing
+# Natural Language Processing
+
+Notes on Natural Language Processing
