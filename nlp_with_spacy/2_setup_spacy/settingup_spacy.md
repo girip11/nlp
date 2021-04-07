@@ -15,3 +15,11 @@
 
 * `python -m spacy <model_name>` can be used to download the required statistical model.
 * `python -m spacy en` by default downloads `en_core_web_sm` model.
+
+## Processing pipeline
+
+* Tokenization
+* Lemmatization
+* Part of speech tagging
+* Syntactic Dependency parsing
+* Name Entity Recognition

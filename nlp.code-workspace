@@ -22,8 +22,7 @@
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 80,
     "editor.detectIndentation": false,
-    "editor.fontSize": 16,
-
+    "editor.fontSize": 18,
     "terminal.integrated.env.linux": {
       "VSCODE_INTEGRATED_TERMINAL": "true",
       "PYTHONPATH": "${workspaceFolder}:${env:PYTHONPATH}"
