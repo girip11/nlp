@@ -17,9 +17,10 @@ pre-commit = "*"
 pydocstyle = "*"
 pytest = "*"
 pyupgrade = "*"
+bandit = "*"
+jupyter = "*"
 
 [packages]
-jupyter = "*"
 matplotlib = "*"
 seaborn = "*"
 spacy = "*"
