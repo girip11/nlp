@@ -1,7 +1,7 @@
 import spacy
 from spacy.symbols import LEMMA, ORTH
 
-nlp = spacy.load("en")
+nlp = spacy.load("en_core_web_md")
 
 # Tokenization and Lemmatization
 doc_obj = nlp("This is my first program using spacy")
