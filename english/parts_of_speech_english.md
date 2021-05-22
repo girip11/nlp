@@ -44,6 +44,19 @@ There are different types of pronouns
 - verbs take different forms to express tense.
 - Verb must always agree with its subject in number(singular/plural).
 
+### [Infinitive verb](https://grammar.yourdictionary.com/parts-of-speech/verbs/infinitive-verb.html)
+
+- Same as the base verb with the word `to` present in front of it.
+- When you use an infinitive verb, the `to` is **a part of the verb. It is not acting as a preposition** in this case.
+
+Examples:
+
+- `to have`
+- `to order`
+
+- Infinitive verbs are one of the 3 verbals. Other two being gerund and participles.
+- Verbals are verbs that are either used as noun(gerund), adjective or adverb.
+
 ## Adverb
 
 - describes/modifies a verb, an adjective or another adverb
