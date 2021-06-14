@@ -1,13 +1,22 @@
 import spacy
+from spacy.lang.en import English
 from spacy.symbols import LEMMA, ORTH
+from spacy.tokens.doc import Doc
 
-nlp = spacy.load("en_core_web_md")
+nlp_model: English = spacy.load("en_core_web_md")
 
-# Tokenization and Lemmatization
-doc_obj = nlp("This is my first program using spacy")
+print(f"Language of the model is {nlp_model.lang}")
 
-for word in doc_obj:
-    print(word.text, word.lemma_)
+# Tokenization
+# Doc object is a container of the token objects
+doc: Doc = nlp_model("This is my first program using spacy")
+
+print(f"Fetch the text from doc:{doc.text}")
+
+# Lemmatization
+for token in doc:
+    print(f"Token:{token.text}")
+    print(f"Lemma: {token.lemma_}")
 
 # 2. special casing token to replace slang words
 # Frisco is a slang word for San Francisco
