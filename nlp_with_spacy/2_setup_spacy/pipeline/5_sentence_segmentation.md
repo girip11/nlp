@@ -10,7 +10,8 @@ print(doc[5].is_sent_end) # refers to "."
 print(doc[6].is_sent_start) # refers to "I" in the second sentence
 
 for sentence in doc.sents:
-    print(sentence)
+    # start and end token indices
+    print(sentence.text, sentence.start, sentence.end)
 ```
 
 ---

@@ -41,3 +41,50 @@ doc_span = doc[4:6]
 
 print(type(doc_span)) # spacy.tokens.span.Span
 ```
+
+## Matcher
+
+- `Matcher` to match tokens in the `Doc` against predefined patterns.
+
+```Python
+from spacy.matcher import Matcher
+
+# matcher needs the vocabulary of the NLP model
+matcher = Matcher(nlp.vocab)
+
+# define list of token structures we are expecting
+pattern1 = [{"LOWER": "unitedstates" }]
+# to match `united states`
+pattern2 = [{"LOWER": "united"}, {"LOWER" : "states"}]
+# to match `united-states` or `united--states`
+pattern3 = [{"LOWER": "united"}, {"IS_PUNCT": True, "OP": "*"}, {"LOWER" : "states"}]
+
+
+matcher.add("UnitedStates", [pattern1, pattern2, pattern3], on_match=None)
+
+doc = nlp("The United States of America is a country consisting of 50 independent states.The first constitution of the UnitedStates was adopted in 1788. The current United-States flag was designed by a high school student – Robert G. Heft.")
+
+matches = matcher(doc)
+
+for match in matches:
+    match_id, start, end = match
+    string_id = nlp.vocab.strings[match_id]
+    span = doc[start:end]
+    print(match_id, string_id, span.text)
+```
+
+- Pattern quantifiers are exactly the same as regex`!`(negate), `?`(0 or 1), `+`(atleast 1), `*`(0 or more)
+
+- To match against a word's lemma, use `{"LEMMA": "lemmatized_word"}` instead of `{"LOWER":"exact_word"}`
+
+![Rule based matcher token attributes](../assets/rule_matcher_token_attributes.png)
+
+**NOTE**: You can pass an empty dictionary `{}` as a wildcard to represent any token. `[{'ORTH': '#'}, {}]` matches any token following `#`
+
+`PhraseMatcher` is used to match against a list of phrases. Refer [NER](../pipeline/6_name_entity_recognition.md) on using `PhraseMatcher`
+
+---
+
+## References
+
+- [Spacy tokenization](https://ashutoshtripathi.com/2020/04/06/guide-to-tokenization-lemmatization-stop-words-and-phrase-matching-using-spacy/)
