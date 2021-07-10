@@ -79,7 +79,7 @@ from spacy.pipeline import Sentencizer
 from spacy import Language
 
 
-@Language.factory("custom_sentencizer3",
+@Language.factory("custom_sentencizer",
 assigns=["token.is_sent_start", "doc.sents"])
 def make_custom_sentencizer(
     nlp: Language,
@@ -87,17 +87,22 @@ def make_custom_sentencizer(
 ):
     return CustomSentencizer(name, punct_chars = Sentencizer.default_punct_chars + [";"])
 
-class CustomSentencizer(Sentencizer):
-    def __call__(self, doc):
-        for token in doc:
-            if token.text == ";":
-                # next token is marked as sentence beginning
-                doc[token.i+1].is_sent_start = True
 
-        return doc
+class CustomSentencizer(Sentencizer):
+    def predict(self, docs):
+        guesses = []
+        for doc in docs:
+            doc_guesses = [False] * len(doc)
+            for token in doc:
+                if token.text == ";":
+                    # next token is marked as sentence beginning
+                    doc_guesses[token.i+1] = True
+            guesses.append(doc_guesses)
+
+        return guesses
 
 # We have to use before parser since we are modifying `Token.is_sent_start`
-nlp.add_pipe("custom_sentencizer3", before="parser")
+nlp.add_pipe("custom_sentencizer")
 print(nlp.pipe_names)
 
 doc = nlp("Management is doing things right; leadership is doing the right things. -Peter Drucker")
