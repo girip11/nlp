@@ -14,7 +14,7 @@ for token in doc:
 - Dependency parsing represents the words in the document as a directed graph.
 - Word becomes the node and the edges provides the relationship between the nodes.
 
-Visualizing dependency parsing
+## Visualizing dependency parsing
 
 ```Python
 from spacy import displacy
@@ -25,3 +25,9 @@ displacy.serve(doc, style="dep", options={"distance": 90})
 ```
 
 ![Dependency parsing graph visualized using displacy](assets/dependency_parsing_graph.png)
+
+---
+
+## References
+
+- [Dependency parsing](https://ashutoshtripathi.com/2020/04/13/parts-of-speech-tagging-and-dependency-parsing-using-spacy-nlp/)

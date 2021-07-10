@@ -6,3 +6,6 @@ pipenv run autoflake -i --remove-all-unused-imports "$FILE"
 
 echo "Running isort"
 pipenv run isort "$FILE"
+
+echo "Running pyupgrade"
+pipenv run pyupgrade --py39-plus "$FILE"
